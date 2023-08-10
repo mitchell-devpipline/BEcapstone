@@ -7,9 +7,9 @@ __all__ = ('db', 'init_db')
 db = SQLAlchemy()
 
 
-def init_db(app=None, db=None):
-    if isinstance(app, Flask) and isinstance(db, SQLAlchemy):
-        db.init_app(app)
+def init_db(org=None, db=None):
+    if isinstance(org, Flask) and isinstance(db, SQLAlchemy):
+        db.init_org(org)
 
     else:
-        raise ValueError("Cannot init DB wihtout db and app objects")
+        raise ValueError("Cannot init DB wihtout db and org objects")
