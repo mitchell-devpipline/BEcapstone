@@ -4,7 +4,7 @@ from db import *
 from models.user import People, people_schema, person_schema
 
 
-def add_person():
+def add_user():
     req_data = request.form if request.form else request.json
 
     fields = ['user_id', 'first_name', 'last_name', 'phone', 'email', 'address', 'birthday', 'active']
