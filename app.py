@@ -4,21 +4,21 @@ import os
 from flask_marshmallow import Marshmallow
 
 import controllers
-from models.people import People, person_schema, people_schema
+from models.meats import Meats, meat_schema, meats_schema
+from models.orders import Orders, order_schema, orders_schema
 from models.organization import Organization, organization_schema, organizations_schema
-from models.sentance import Sentance, sentance_schema, sentances_schema
-from models.crimes import Crimes, crime_schema, crimes_schema
-from models.crime_categories import CrimeCategories, crimecat_schema, crimecats_schema
+from models.produce import Produce, produce_schema, produces_schema
+from models.user import User, user_schema, users_schema
 
 database_pre = os.environ.get("DATABASE_PRE")
 database_addr = os.environ.get("DATABASE_ADDR")
-database_person = os.environ.get("DATABASE_USER")
+database_user = os.environ.get("DATABASE_USER")
 database_port = os.environ.get("DATABASE_PORT")
 database_name = os.environ.get("DATABASE_NAME")
 
 app = Flask(__name__)
 
-app.config["SQLALCHEMY_DATABASE_URI"] = f"{database_pre}{database_person}@{database_addr}:{database_port}/{database_name}"
+app.config["SQLALCHEMY_DATABASE_URI"] = f"{database_pre}{database_user}@{database_addr}:{database_port}/{database_name}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 init_db(app, db)
@@ -90,61 +90,61 @@ def del_org_by_id(id):
     return jsonify("Organization Deleted"), 200
 
 
-# People
+# user
 
-@app.route('/person/add', methods=["POST"])
-def add_person():
-    return controllers.add_person()
-
-
-@app.route('/persons/get', methods=['GET'])
-def get_all_active_persons():
-    persons = db.session.query(People).filter(People.active == True).all()
-
-    if not persons:
-        return jsonify(person_schema.dump(persons)), 200
+@app.route('/user/add', methods=["POST"])
+def add_users():
+    return controllers.add_user()
 
 
-@app.route("/person/get/<id>", methods=["GET"])
-def get_persons_by_id(id):
-    person = db.session.query(People).filter(People.person_id == id).first()
+@app.route('/user/get', methods=['GET'])
+def get_all_active_users():
+    users = db.session.query(User).filter(users.active == True).all()
 
-    if not person:
-        return jsonify("That person doesn't exit"), 404
-
-    return jsonify(person_schema.dump(person)), 200
+    if not users:
+        return jsonify(user_schema.dump(users)), 200
 
 
-@app.route('/person/<uuid>', methods=['PUT'])
-def update_person(uuid):
+@app.route("/user/get/<id>", methods=["GET"])
+def get_user_by_id(id):
+    user = db.session.query(user).filter(user.user_id == id).first()
+
+    if not user:
+        return jsonify("That user doesn't exit"), 404
+
+    return jsonify(user_schema.dump(user)), 200
+
+
+@app.route('/user/<uuid>', methods=['PUT'])
+def update_user(uuid):
     req_data = request.form if request.form else request.json
 
-    person = db.session.query(People).filter(People.person_id == uuid).first()
+    user = db.session.query(user).filter(user.user_id == uuid).first()
 
-    if not person:
-        return jsonify("The person doesn't exist"), 404
+    if not user:
+        return jsonify("The user doesn't exist"), 404
 
     for field in req_data.keys():
-        if getattr(person, field):
-            setattr(person, field, req_data[field])
+        if getattr(user, field):
+            setattr(user, field, req_data[field])
 
     db.session.commit()
 
-    return jsonify("person Updated.")
+    return jsonify("user Updated.")
 
 
-@app.route("/person/delete/<id>", methods=["DELETE"])
-def del_person_by_id(id):
-    person = db.session.query(People).filter(People.person_id == id).first()
+@app.route("/user/delete/<id>", methods=["DELETE"])
+def del_user_by_id(id):
+    user = db.session.query(user).filter(user.user_id == id).first()
 
-    if not person:
-        return jsonify("That person doesn't exit"), 404
+    if not user:
+        return jsonify("That user doesn't exit"), 404
 
     else:
-        db.session.delete(person)
+        db.session.delete(user)
         db.session.commit()
 
-    return jsonify("person Has been Deleted"), 200
+    return jsonify("User Has been Deleted"), 200
 
 
 # Sentance

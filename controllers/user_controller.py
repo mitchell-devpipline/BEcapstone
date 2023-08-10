@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 
 from db import *
-from models.user import People, people_schema, person_schema
+from models.user import User, user_schema, users_schema
 
 
 def add_user():
@@ -19,7 +19,7 @@ def add_user():
 
         values[field] = field_data
 
-    new_person = People(
+    new_user = User(
         values['user_id'],
         values['first_name'],
         values['last_name'],
@@ -28,7 +28,7 @@ def add_user():
         values['address']
     )
 
-    db.session.add(new_person)
+    db.session.add(new_user)
     db.session.commit()
 
     return jsonify('User Created'), 200
