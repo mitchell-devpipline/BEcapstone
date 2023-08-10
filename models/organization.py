@@ -15,13 +15,11 @@ class Organization(db.Model):
     address = db.Column(db.String())
     active = db.Column(db.Boolean(), default=True)
 
-    def __init__(self, org_id, produce_id, meat_id, org_name, address, active):
-        self.org_id = org_id
+    def __init__(self, produce_id, meat_id, org_name, address):
         self.produce_id = produce_id
         self.meat_id = meat_id
         self.org_name = org_name
         self.address = address
-        self.active = active
 
 
 class OrganizationSchema(ma.Schema):

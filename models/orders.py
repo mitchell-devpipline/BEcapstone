@@ -24,10 +24,13 @@ class Orders(db.Model):
         self.active = active
 
 
-class ProduceSchema(ma.Schema):
+ß
+
+
+class OrdersSchema(ma.Schema):
     class Meta:
         fields = ['']
 
 
-produce_schema = ProduceSchema()
-produces_schema = ProduceSchema(many=True)
+order_schema = OrdersSchema()
+orders_schema = OrdersSchema(many=True)

@@ -7,8 +7,8 @@ from models.organization import Organization, organization_schema, organizations
 def add_organization():
     req_data = request.form if request.form else request.json
 
-    fields = ['name', 'phone', 'city', 'state', 'active']
-    req_fields = ['name']
+    fields = ['org_id', 'produce_id', 'meat_id', 'org_name', 'address']
+    req_fields = ['org_id', 'produce_id', 'meat_id', 'org_name']
 
     values = {}
 
@@ -19,7 +19,7 @@ def add_organization():
 
         values[field] = field_data
 
-    new_org = Organization(values['name'], values['city'], values['state'], values['phone'], values['active'])
+    new_org = Organization(values['produce_id'], values['meat_id'], values['org_name'], values['address'])
     db.session.add(new_org)
     db.session.commit()
 

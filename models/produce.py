@@ -10,16 +10,14 @@ class Produce(db.Model):
 
     produce_id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     org_id = db.Column(UUID(as_uuid=True), db.ForeignKey('Organization.org_id'), nullable=False)
-    produce_name = db.Column(db.String())
+    produce_name = db.Column(db.String(), nullable=False)
     price = db.Column(db.Float(), nullable=False)
     active = db.Column(db.Boolean(), default=True)
 
-    def __init__(self, produce_id, org_id, produce_name, price, active):
-        self.produce_id = produce_id
+    def __init__(self, org_id, produce_name, price):
         self.org_id = org_id
         self.produce_name = produce_name
         self.price = price
-        self.active = active
 
 
 class ProduceSchema(ma.Schema):

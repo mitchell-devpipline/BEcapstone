@@ -8,7 +8,7 @@ def add_person():
     req_data = request.form if request.form else request.json
 
     fields = ['user_id', 'first_name', 'last_name', 'phone', 'email', 'address', 'birthday', 'active']
-    req_fields = ['name', 'email', 'org_id']
+    req_fields = ['user_id,''first_name', 'last_name', 'phone', 'email', 'address']
 
     values = {}
 
@@ -25,9 +25,8 @@ def add_person():
         values['last_name'],
         values['phone'],
         values['email'],
-        values['address'],
-        values['birthday'],
-        values['active'])
+        values['address']
+    )
 
     db.session.add(new_person)
     db.session.commit()

@@ -10,7 +10,7 @@ class Meats(db.Model):
 
     meat_id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     org_id = db.Column(UUID(as_uuid=True), db.ForeignKey('Organization.org_id'), nullable=False)
-    name = db.Column(db.String())
+    name = db.Column(db.String(), nullable=False)
     price = db.Column(db.Float(), nullable=False)
     active = db.Column(db.Boolean(), default=True)
 
@@ -22,10 +22,10 @@ class Meats(db.Model):
         self.active = active
 
 
-class ProduceSchema(ma.Schema):
+class MeatSchema(ma.Schema):
     class Meta:
         fields = ['']
 
 
-produce_schema = ProduceSchema()
-produces_schema = ProduceSchema(many=True)
+meat_schema = MeatSchema()
+meats_schema = MeatSchema(many=True)
