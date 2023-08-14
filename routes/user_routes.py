@@ -1,15 +1,15 @@
-from flask import request, Blueprint
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Blueprint
 from db import *
 import os
 from flask_marshmallow import Marshmallow
+from controllers import user_controller
 from models.user import User, user_schema, users_schema
 user = Blueprint('user', __name__)
 
 
 @user.route('/user/add', methods=["POST"])
 def add_users():
-    return controllers.add_user()
+    return user_controller.add_user()
 
 
 @user.route('/user/get', methods=['GET'])

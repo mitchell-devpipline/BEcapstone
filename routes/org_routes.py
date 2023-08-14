@@ -1,15 +1,10 @@
-from flask import request, Blueprint
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Blueprint
 from db import *
 import os
 from flask_marshmallow import Marshmallow
-from models.organization import Organization, organizations_schema, organization_schema
-
 from controllers import organization_controller
-
+from models.organization import Organization, organizations_schema, organization_schema
 org = Blueprint('org', __name__)
-
-# Orgs
 
 
 @org.route('/orgs/add', methods=["POST"])

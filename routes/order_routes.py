@@ -1,9 +1,8 @@
-from flask import request, Blueprint
 from flask import Flask, request, jsonify, Blueprint
 from db import *
 import os
 from flask_marshmallow import Marshmallow
-from controllers.orders_controller import orders_controller
+from controllers import orders_controller
 from models.orders import Orders, order_schema, orders_schema
 order = Blueprint('order', __name__)
 
