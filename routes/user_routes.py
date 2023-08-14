@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify
 from db import *
 import os
 from flask_marshmallow import Marshmallow
-from models.user import user_schema, users_schema
+from models.user import User, user_schema, users_schema
 user = Blueprint('user', __name__)
 
 

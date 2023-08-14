@@ -24,9 +24,6 @@ class Orders(db.Model):
         self.active = active
 
 
-ß
-
-
 class OrdersSchema(ma.Schema):
     class Meta:
         fields = ['']

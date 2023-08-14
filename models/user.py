@@ -12,7 +12,7 @@ class User(db.Model):
     first_name = db.Column(db.String(), nullable=False)
     last_name = db.Column(db.String(), nullable=False)
     email = db.Column(db.String(), nullable=False, unique=True)
-    phone = db.Column(db.String(), nullabe=False)
+    phone = db.Column(db.String(), nullable=False)
     address = db.Column(db.String(), nullable=False)
     active = db.Column(db.Boolean(), default=True)
 
