@@ -3,7 +3,7 @@ from db import *
 import os
 from flask_marshmallow import Marshmallow
 from controllers import produce_controller
-from models.produce import produce, produce_schema, produces_schema
+from models.produce import Produce, produce_schema, produces_schema
 produce = Blueprint('produce', __name__)
 
 

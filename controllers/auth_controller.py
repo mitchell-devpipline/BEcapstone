@@ -3,7 +3,7 @@ from flask_bcrypt import check_password_hash
 
 from datetime import datetime, timedelta
 
-from models.user import Users
+from models.user import User
 from models.auth_tokens import AuthTokens, auth_token_schema
 from db import db
 
@@ -13,7 +13,7 @@ def auth_token_add():
     email = token_request.get('email')
     password = token_request.get("password")
     expiry = datetime.now() + timedelta(hours=12)
-    user_data = db.session.query(Users).filter(Users.email == email).filter(Users.active).first()
+    user_data = db.session.query(User).filter(User.email == email).filter(User.active).first()
 
     if not email or not password or not user_data:
         return jsonify({"message": "Invalid Login"}), 401

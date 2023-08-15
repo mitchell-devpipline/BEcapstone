@@ -10,6 +10,13 @@ from models.organization import Organization, organization_schema, organizations
 from models.produce import Produce, produce_schema, produces_schema
 from models.user import User, user_schema, users_schema
 
+from routes.auth_routes import auth
+from routes.meats_routes import meat
+from routes.order_routes import order
+from routes.org_routes import org
+from routes.produce_routes import produce
+from routes.user_routes import user
+
 database_pre = os.environ.get("DATABASE_PRE")
 database_addr = os.environ.get("DATABASE_ADDR")
 database_user = os.environ.get("DATABASE_USER")
@@ -31,6 +38,13 @@ def create_all():
         db.create_all()
         print("All Done")
 
+
+app.register_blueprint(auth)
+app.register_blueprint(meat)
+app.register_blueprint(order)
+app.register_blueprint(org)
+app.register_blueprint(produce)
+app.register_blueprint(user)
 
 if __name__ == "__main__":
     create_all()
