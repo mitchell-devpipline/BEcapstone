@@ -3,7 +3,7 @@ from flask_bcrypt import check_password_hash
 
 from datetime import datetime, timedelta
 
-from models.users import Users
+from models.user import Users
 from models.auth_tokens import AuthTokens, auth_token_schema
 from db import db
 
