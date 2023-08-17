@@ -8,7 +8,7 @@ def add_user():
     req_data = request.form if request.form else request.json
 
     fields = ['user_id', 'first_name', 'last_name', 'phone', 'email', 'password', 'address', 'birthday', 'active']
-    req_fields = ['user_id,''first_name', 'last_name', 'phone', 'email', 'password', 'address']
+    req_fields = ['user_id,', 'first_name', 'last_name', 'phone', 'email', 'password', 'address']
 
     values = {}
 
@@ -20,13 +20,12 @@ def add_user():
         values[field] = field_data
 
     new_user = User(
-        values['user_id'],
         values['first_name'],
         values['last_name'],
         values['phone'],
         values['email'],
         values['password'],
-        values['address'])
+        values['address'],)
 
     db.session.add(new_user)
     db.session.commit()

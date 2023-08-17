@@ -17,13 +17,14 @@ class User(db.Model):
     address = db.Column(db.String(), nullable=False)
     active = db.Column(db.Boolean(), default=True)
 
-    def __init__(self, first_name, last_name, phone, email, address, active):
+    def __init__(self, first_name, last_name, phone, email, password, address):
         self.first_name = first_name
         self.last_name = last_name
         self.phone = phone
         self.email = email
-        self.address - address
-        self.active = active
+        self.password = password
+        self.address = address
+        self.active = True
 
 
 class UserSchema(ma.Schema):
