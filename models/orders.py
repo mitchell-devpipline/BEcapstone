@@ -15,13 +15,13 @@ class Orders(db.Model):
     shipped = db.Column(db.Boolean(), default=True)
     active = db.Column(db.Boolean(), default=True)
 
-    def __init__(self, order_id, user_id, meat_id, produce_id, shipped, active):
+    def __init__(self, order_id, user_id, meat_id, produce_id, shipped):
         self.order_id = order_id
         self.user_id = user_id
         self.meat_id = meat_id
         self.produce_id = produce_id
         self.shipped = shipped
-        self.active = active
+        self.active = True
 
 
 class OrdersSchema(ma.Schema):

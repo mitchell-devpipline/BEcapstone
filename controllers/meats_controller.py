@@ -23,8 +23,7 @@ def add_meat():
         values['meat_id'],
         values['org_id'],
         values['name'],
-        values['price'],
-        values['active'])
+        values['price'])
 
     db.session.add(new_meat)
     db.session.commit()

@@ -14,12 +14,12 @@ class Meats(db.Model):
     price = db.Column(db.Float(), nullable=False)
     active = db.Column(db.Boolean(), default=True)
 
-    def __init__(self, produce_id, org_id, name, price, active):
-        self.produce_id = produce_id
+    def __init__(self, meat_id, org_id, name, price):
+        self.meat_id = meat_id
         self.org_id = org_id
         self.name = name
-        self.org_name = price
-        self.active = active
+        self.price = price
+        self.active = True
 
 
 class MeatSchema(ma.Schema):

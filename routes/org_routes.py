@@ -16,7 +16,7 @@ def add_organization():
 def get_all_active_orgs():
     orgs = db.session.query(Organization).all()
     if not orgs:
-        return jsonify("there are no orgs here"), 404
+        return jsonify("There are no orgs here"), 404
     else:
         return jsonify(organizations_schema.dump(orgs)), 200
 
