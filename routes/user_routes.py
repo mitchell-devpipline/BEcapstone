@@ -4,6 +4,7 @@ import os
 from flask_marshmallow import Marshmallow
 from controllers import user_controller
 from models.user import User, user_schema, users_schema
+
 user = Blueprint('user', __name__)
 
 
@@ -14,10 +15,10 @@ def add_users():
 
 @user.route('/user/get', methods=['GET'])
 def get_all_active_users():
-    users = db.session.query(User).filter(users.active == True).all()
+    users = db.session.query(User).filter(User.active == True).all()
 
     if not users:
-        return jsonify(user_schema.dump(users)), 200
+        return jsonify(user_schema.dump(user)), 200
 
 
 @user.route("/user/get/<id>", methods=["GET"])

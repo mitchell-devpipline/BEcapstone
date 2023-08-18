@@ -24,7 +24,7 @@ class Meats(db.Model):
 
 class MeatSchema(ma.Schema):
     class Meta:
-        fields = ['']
+        fields = ['meat_id', 'org_id', 'name', 'price', 'active']
 
 
 meat_schema = MeatSchema()

@@ -22,7 +22,7 @@ class Produce(db.Model):
 
 class ProduceSchema(ma.Schema):
     class Meta:
-        fields = ['']
+        fields = ['produce_id', 'org_id', 'produce_name', 'price', 'active']
 
 
 produce_schema = ProduceSchema()

@@ -21,7 +21,7 @@ class Organization(db.Model):
 
 class OrganizationSchema(ma.Schema):
     class Meta:
-        fields = ['']
+        fields = ['org_id', 'org_name', 'address', 'active']
 
 
 organization_schema = OrganizationSchema()

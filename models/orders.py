@@ -26,7 +26,7 @@ class Orders(db.Model):
 
 class OrdersSchema(ma.Schema):
     class Meta:
-        fields = ['']
+        fields = ['order_id', 'user_id', 'meat_id', 'produce_id', 'shipped', 'active']
 
 
 order_schema = OrdersSchema()

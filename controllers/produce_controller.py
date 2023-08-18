@@ -7,8 +7,8 @@ from models.produce import Produce, produce_schema, produces_schema
 def add_produce():
     req_data = request.form if request.form else request.json
 
-    fields = ['produce_id', 'org_id', 'produce_name', 'price']
-    req_fields = ['produce_id', 'org_id', 'produce_name', 'price']
+    fields = ['org_id', 'produce_name', 'price']
+    req_fields = ['org_id', 'produce_name', 'price']
 
     values = {}
 
@@ -20,11 +20,10 @@ def add_produce():
         values[field] = field_data
 
     new_produce = Produce(
-        values['produce_id'],
+        # values['produce_id'],
         values['org_id'],
         values['produce_name'],
-        values['price'],
-        values['active'])
+        values['price'])
 
     db.session.add(new_produce)
     db.session.commit()

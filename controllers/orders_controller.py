@@ -7,8 +7,8 @@ from models.orders import Orders, order_schema, orders_schema
 def add_order():
     req_data = request.form if request.form else request.json
 
-    fields = ['order_id', 'user_id', 'meat_id', 'produce_id', 'shipped']
-    req_fields = ['order_id', 'user_id', 'meat_id', 'produce_id', 'shipped']
+    fields = ['user_id', 'meat_id', 'produce_id', 'shipped']
+    req_fields = ['user_id', 'meat_id', 'produce_id', 'shipped']
 
     values = {}
 
@@ -20,7 +20,6 @@ def add_order():
         values[field] = field_data
 
     new_produce = Orders(
-        values['order_id'],
         values['user_id'],
         values['meat_id'],
         values['produce_id'],
