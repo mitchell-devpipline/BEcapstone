@@ -17,8 +17,8 @@ def add_users():
 def get_all_active_users():
     users = db.session.query(User).filter(User.active == True).all()
 
-    if not users:
-        return jsonify(user_schema.dump(user)), 200
+    if users:
+        return jsonify(users_schema.dump(users)), 200
 
 
 @user.route("/user/get/<id>", methods=["GET"])

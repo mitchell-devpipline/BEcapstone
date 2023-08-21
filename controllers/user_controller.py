@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-
+from flask_bcrypt import generate_password_hash
 from db import *
 from models.user import User, user_schema, users_schema
 
@@ -27,6 +27,7 @@ def add_user():
         values['password'],
         values['address'],)
 
+    new_user.password = generate_password_hash(new_user.password).decode("utf8")
     db.session.add(new_user)
     db.session.commit()
 

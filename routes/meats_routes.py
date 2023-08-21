@@ -14,15 +14,15 @@ def add_meat():
 
 @meat.route('/meat/get', methods=['GET'])
 def get_all_active_meat():
-    meats = db.session.query(Meats).filter(meats.active == True).all()
+    meats = db.session.query(Meats).filter(Meats.active == True).all()
 
-    if not meats:
-        return jsonify(meat_schema.dump(meats)), 200
+    if meat:
+        return jsonify(meats_schema.dump(meats)), 200
 
 
 @meat.route("/meat/get/<id>", methods=["GET"])
 def get_meat_by_id(id):
-    meat = db.session.query(meat).filter(meat.user_id == id).first()
+    meat = db.session.query(Meats).filter(Meats.meat_id == id).first()
 
     if not meat:
         return jsonify("That Meat doesn't exit"), 404
@@ -34,7 +34,7 @@ def get_meat_by_id(id):
 def update_meat(uuid):
     req_data = request.form if request.form else request.json
 
-    meat = db.session.query(meat).filter(meat.user_id == uuid).first()
+    meat = db.session.query(Meats).filter(Meats.meat_id == uuid).first()
 
     if not meat:
         return jsonify("The Meat doesn't exist"), 404
@@ -50,7 +50,7 @@ def update_meat(uuid):
 
 @meat.route("/meat/delete/<id>", methods=["DELETE"])
 def del_meat_by_id(id):
-    meat = db.session.query(meat).filter(meat.user_id == id).first()
+    meat = db.session.query(Meats).filter(Meats.meat_id == id).first()
 
     if not meat:
         return jsonify("That Meat doesn't exit"), 404
