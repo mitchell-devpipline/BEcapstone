@@ -9,7 +9,7 @@ class Organization(db.Model):
     __tablename__ = "Organization"
 
     org_id = db.Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    org_name = db.Column(db.String())
+    org_name = db.Column(db.String(), nullable=False)
     address = db.Column(db.String())
     active = db.Column(db.Boolean(), default=True)
 
