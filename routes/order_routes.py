@@ -14,15 +14,18 @@ def add_order():
 
 @order.route('/order/get', methods=['GET'])
 def get_all_active_order():
-    orders = db.session.query(Orders).filter(orders.active == True).all()
+    orders = db.session.query(Orders).filter(Orders.active == True).all()
 
-    if not orders:
-        return jsonify(order_schema.dump(orders)), 200
+    if orders:
+        return jsonify(orders_schema.dump(orders)), 200
+
+    else:
+        return jsonify("There are no orders that have been placed"), 404
 
 
 @order.route("/order/get/<id>", methods=["GET"])
 def get_order_by_id(id):
-    order = db.session.query(order).filter(order.user_id == id).first()
+    order = db.session.query(Orders).filter(Orders.order_id == id).first()
 
     if not order:
         return jsonify("That order doesn't exit"), 404
@@ -34,7 +37,7 @@ def get_order_by_id(id):
 def update_order(uuid):
     req_data = request.form if request.form else request.json
 
-    order = db.session.query(order).filter(order.user_id == uuid).first()
+    order = db.session.query(Orders).filter(Orders.order_id == uuid).first()
 
     if not order:
         return jsonify("The order doesn't exist"), 404
@@ -50,7 +53,7 @@ def update_order(uuid):
 
 @order.route("/order/delete/<id>", methods=["DELETE"])
 def del_order_by_id(id):
-    order = db.session.query(order).filter(order.user_id == id).first()
+    order = db.session.query(Orders).filter(Orders.order_id == id).first()
 
     if not order:
         return jsonify("That order doesn't exit"), 404

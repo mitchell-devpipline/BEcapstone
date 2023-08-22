@@ -23,8 +23,7 @@ def add_order():
         values['user_id'],
         values['meat_id'],
         values['produce_id'],
-        values['shipped'],
-        values['active'])
+        values['shipped'])
 
     db.session.add(new_produce)
     db.session.commit()

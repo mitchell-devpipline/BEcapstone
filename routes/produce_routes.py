@@ -14,17 +14,20 @@ def add_produce():
 
 @produce.route('/produce/get', methods=['GET'])
 def get_all_active_produce():
-    produces = db.session.query(produces).filter(produces.active == True).all()
+    produces = db.session.query(Produce).filter(Produce.active == True).all()
 
     if not produces:
-        return jsonify(produce_schema.dump(produces)), 200
+        return jsonify("There are no produce products here"), 404
+
+    else:
+        return jsonify(produces_schema.dump(produces)), 200
 
 
 @produce.route("/produce/get/<id>", methods=["GET"])
 def get_produce_by_id(id):
-    produce = db.session.query(produce).filter(produce.user_id == id).first()
+    produce = db.session.query(Produce).filter(Produce.produce_id == id).first()
 
-    if not produce:
+    if not Produce:
         return jsonify("That produce doesn't exit"), 404
 
     return jsonify(produce_schema.dump(produce)), 200
@@ -34,7 +37,7 @@ def get_produce_by_id(id):
 def update_produce(uuid):
     req_data = request.form if request.form else request.json
 
-    produce = db.session.query(produce).filter(produce.user_id == uuid).first()
+    produce = db.session.query(Produce).filter(Produce.produce_id == uuid).first()
 
     if not produce:
         return jsonify("The produce doesn't exist"), 404
@@ -50,7 +53,7 @@ def update_produce(uuid):
 
 @produce.route("/produce/delete/<id>", methods=["DELETE"])
 def del_produce_by_id(id):
-    produce = db.session.query(produce).filter(produce.user_id == id).first()
+    produce = db.session.query(Produce).filter(Produce.produce_id == id).first()
 
     if not produce:
         return jsonify("That produce doesn't exit"), 404
