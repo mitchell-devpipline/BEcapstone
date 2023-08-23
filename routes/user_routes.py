@@ -23,7 +23,7 @@ def get_all_active_users():
 
 @user.route("/user/get/<id>", methods=["GET"])
 def get_user_by_id(id):
-    user = db.session.query(user).filter(user.user_id == id).first()
+    user = db.session.query(User).filter(User.user_id == id).first()
 
     if not user:
         return jsonify("That user doesn't exit"), 404
@@ -35,7 +35,7 @@ def get_user_by_id(id):
 def update_user(uuid):
     req_data = request.form if request.form else request.json
 
-    user = db.session.query(user).filter(user.user_id == uuid).first()
+    user = db.session.query(User).filter(User.user_id == uuid).first()
 
     if not user:
         return jsonify("The user doesn't exist"), 404
@@ -51,7 +51,7 @@ def update_user(uuid):
 
 @user.route("/user/delete/<id>", methods=["DELETE"])
 def del_user_by_id(id):
-    user = db.session.query(user).filter(user.user_id == id).first()
+    user = db.session.query(User).filter(User.user_id == id).first()
 
     if not user:
         return jsonify("That user doesn't exit"), 404

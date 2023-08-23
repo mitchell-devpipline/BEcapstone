@@ -82,6 +82,7 @@ def seed_data():
                 password).decode("utf8")
 
             record = User(
+                admin=config.admin,
                 first_name=config.first_name,
                 last_name=config.last_name,
                 phone=config.phone,

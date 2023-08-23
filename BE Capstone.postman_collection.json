@@ -1,0 +1,521 @@
+{
+  "info": {
+    "_postman_id": "0be5032e-3898-46c0-a7f6-f6fa90f7d401",
+    "name": "BE Capstone",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "28998275"
+  },
+  "item": [
+    {
+      "name": "Meats",
+      "item": [
+        {
+          "name": "Add Meat",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"org_id\":\"588b3ff0-826b-4a2c-85eb-f3e7770feec6\",\n    \"name\": \"Full Chicken\",\n    \"price\": 3.75\n\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8086/meat/add",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["meat", "add"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Meat By Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8086/meat/get/942dfebe-3484-4739-a6d2-16ad8cda4b6f",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["meat", "get", "942dfebe-3484-4739-a6d2-16ad8cda4b6f"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all Meats",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8086/meat/get",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["meat", "get"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Meat",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8086/meat/942dfebe-3484-4739-a6d2-16ad8cda4b6f",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["meat", "942dfebe-3484-4739-a6d2-16ad8cda4b6f"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Meat",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "localhost:8086/meat/942dfebe-3484-4739-a6d2-16ad8cda4b6f",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["meat", "942dfebe-3484-4739-a6d2-16ad8cda4b6f"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Orders",
+      "item": [
+        {
+          "name": "Order Add",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"user_id\": \"c48b9a50-3a72-40d6-b70d-e9947965a088\",\n    \"meat_id\": \"b60d9a87-59f0-4802-8e48-66f30b9e5c44\",\n    \"produce_id\": \"0014ffa5-f4f6-4d89-8e8f-83b8120505af\",\n    \"shipped\": true\n\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8086/order/add",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["order", "add"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all Orders",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8086/order/get",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["order", "get"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get order by Id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8086/order/get/<id>",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["order", "get", "<id>"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Order",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "localhost:8086/user/<id>",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["user", "<id>"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Order",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "localhost:8086/order/delete/<id>",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["order", "delete", "<id>"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Organization",
+      "item": [
+        {
+          "name": "Add Org",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"org_name\": \"Happy Valley Farm\",\n    \"address\": \"777 Happy Valley Drive NC 65201\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8086/orgs/add",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["orgs", "add"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Orgs",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8086/orgs/get",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["orgs", "get"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Org by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8086/org/get/<id>",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["org", "get", "<id>"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Org",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "localhost:8086/org/<uuid>",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["org", "<uuid>"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Org Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "localhost:8086/org/delete/<id>",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["org", "delete", "<id>"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Produce",
+      "item": [
+        {
+          "name": "Add Produce",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"org_id\":\"588b3ff0-826b-4a2c-85eb-f3e7770feec6\",\n    \"produce_name\": \"Corn Bushel\",\n    \"price\":11.50\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8086/produce/add",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["produce", "add"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all Produce",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8086/produce/get",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["produce", "get"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Produce by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8086/produce/get/304709b1-1b00-432b-ae80-83764bbeca9c",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["produce", "get", "304709b1-1b00-432b-ae80-83764bbeca9c"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Produce",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"price\": 15.5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8086/produce/304709b1-1b00-432b-ae80-83764bbeca9c",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["produce", "304709b1-1b00-432b-ae80-83764bbeca9c"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Produce",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "localhost:8086/produce/delete/304709b1-1b00-432b-ae80-83764bbeca9c",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": [
+                "produce",
+                "delete",
+                "304709b1-1b00-432b-ae80-83764bbeca9c"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "User Add",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"first_name\": \"Rufus\",\n    \"last_name\": \"Jacksly\",\n    \"phone\" : \"(888)888-8888\",\n    \"email\": \"mitchell+2@devpipeline.com\",\n    \"address\": \"785 N Charlston Chew Way NJ 87658\",\n    \"password\": \"1234\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8086/user/add",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["user", "add"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all Users",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8086/user/get",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["user", "get"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "localhost:8086/user/get/<id>",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["user", "get", "<id>"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "    {\n        \"admin\": \"true\"\n    }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "localhost:8086/user/<id>",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["user", "<id>"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "User Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "localhost:8086/user/delete/<id>",
+              "host": ["localhost"],
+              "port": "8086",
+              "path": ["user", "delete", "<id>"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Auth",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\":\"johndabomb@AOL.com\",\n    \"password\":\"1234\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8086/user/auth",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8086",
+          "path": ["user", "auth"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

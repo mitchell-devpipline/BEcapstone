@@ -5,6 +5,7 @@ org_name = "Happy Farm LLC"
 address = "2956 Happy Valley 84602 VT"
 
 # User info
+admin = True
 first_name = "John Da"
 last_name = "Bomb Ipson"
 phone = "(666)-777-7777"
